@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + scoreController.score; // スコアを更新
         ballAmountText.text = "Last: " + shooter.ballAmount; // 残ボール数更新
 
-        if (gameTime <= 0)
+        if (gameTime <= 0.0f)
         {
             TimeOver();
         }
@@ -72,20 +72,16 @@ public class GameManager : MonoBehaviour
         statusText.GetComponent<TextMeshProUGUI>().text = "GAME OVER!";
         statusText.SetActive(true);
 
-        if (audioSource != null && gameOver != null)
+        if (gameOver != null)
         {
             audioSource.PlayOneShot(gameOver); // 効果音を再生
+
+            Invoke("ChangeScene", 3.0f); // 3秒後にシーンを変更
         }
-        else
+
+        void ChangeScene()
         {
-            Debug.LogError("AudioSourceまたはgameOverが設定されていません！");
+            SceneManager.LoadScene(sceneToLoad); // インスペクタで指定されたシーンに移行
         }
-
-        Invoke("ChangeScene", 3.0f); // 3秒後にシーンを変更
-    }
-
-    void ChangeScene()
-    {
-        SceneManager.LoadScene(sceneToLoad); // インスペクタで指定されたシーンに移行
     }
 }

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SimpleScoreManager : MonoBehaviour
+public class TitleManager : MonoBehaviour
 {
     public TextMeshProUGUI hiScoreText; // ハイスコアテキスト
 
