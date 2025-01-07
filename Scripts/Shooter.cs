@@ -9,7 +9,7 @@ public class Shooter : MonoBehaviour
     public float shotForce; // ショットパワー
     public float shotTorque; // 回転パワー
     public int ballAmount; // ボール残数
-    public int ballNumber; // ボールの識別番号
+    public int ballsNumber; // ボールの識別番号
     public AudioClip shotSound; // ショット音
     private AudioSource audioSource; // AudioSourceコンポーネント
 
@@ -48,7 +48,9 @@ public class Shooter : MonoBehaviour
             Quaternion.identity
         );
         // ボールの識別番号を+1
-        ball.GetComponent<BallController>().ballNumber++;
+        ball.GetComponent<BallController>().ballNumber = ballsNumber;
+        ballsNumber++;
+
         // ボールの残数-1
         ballAmount--;
         // 生成したボールの親オブジェクトにBallsオブジェクトを指名
